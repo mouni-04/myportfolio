@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamarthi Mounika - Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for social media and other icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Even darker blue background */
+            color: #e2e8f0; /* Lighter gray text */
+        }
+        .section {
+            scroll-margin-top: 70px; /* Offset for sticky header */
+        }
+        .glassmorphism-card {
+            background: rgba(30, 41, 59, 0.5); /* Semi-transparent darker background */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glassmorphism-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .accent-color {
+            color: #38bdf8; /* Sky blue accent */
+        }
+        /* Hero background gradient animation */
+        #hero {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #334155);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+        /* Blinking cursor for typed text effect */
+        .typed-cursor { display: inline-block; width: 2px; background-color: #38bdf8; animation: blink 0.7s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Scroll animations */
+        .scroll-animate, .stagger-item { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .scroll-animate.visible, .stagger-item.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- MODAL STYLES --- */
+        .modal { transition: opacity 0.3s ease; }
+        .modal-content { transition: transform 0.3s ease; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-slate-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">
+                <span class="hidden sm:inline">Y Mounika</span>
+                <span class="sm:hidden">MST.</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 items-center text-sm">
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
+                <a href="#certificates" class="hover:text-sky-400 transition-colors">Certificates</a>
+                <a href="#interests" class="hover:text-sky-400 transition-colors">Interests</a>
+                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white p-2">
+                <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#about" class="mobile-nav-link block py-2 px-3 rounded-md hover:bg-slate-700 hover:text-sky-400 transition-colors">About</a>
+                <a href="#skills" class="mobile-nav-link block py-2 px-3 rounded-md hover:bg-slate-700 hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#projects" class="mobile-nav-link block py-2 px-3 rounded-md hover:bg-slate-700 hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#education" class="mobile-nav-link block py-2 px-3 rounded-md hover:bg-slate-700 hover:text-sky-400 transition-colors">Education</a>
+                <a href="#certificates" class="mobile-nav-link block py-2 px-3 rounded-md hover:bg-slate-700 hover:text-sky-400 transition-colors">Certificates</a>
+                <a href="#interests" class="mobile-nav-link block py-2 px-3 rounded-md hover:bg-slate-700 hover:text-sky-400 transition-colors">Interests</a>
+                <a href="#contact" class="mobile-nav-link block mt-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors text-center">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="container mx-auto px-4 sm:px-6 py-20 md:py-32 text-center rounded-b-3xl overflow-hidden">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight opacity-0 animate-fade-in-down" style="animation-delay: 0.2s;">
+                Yamarthi Mounika 
+            </h1>
+            <p class="mt-4 text-lg sm:text-xl md:text-2xl accent-color font-medium h-8 sm:h-10 opacity-0 animate-fade-in-down" style="animation-delay: 0.4s;">
+                <span id="typed-text"></span><span class="typed-cursor"></span>
+            </p>
+            <p class="mt-6 max-w-3xl mx-auto text-base sm:text-lg text-slate-300 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+                Passionate about leveraging technology to drive innovation and solve real-world challenges, with a strong foundation in web development, cloud computing, and AI.
+            </p>
+            <div class="mt-8 flex justify-center space-x-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.8s;">
+                <a href="https://github.com/mouni-04" target="_blank" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                    <i data-feather="github" class="w-7 h-7"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/yamarthi-mounika-603a55269" target="_blank" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                    <i data-feather="linkedin" class="w-7 h-7"></i>
+                </a>
+                <a href="https://www.hackerrank.com/profile/mouni_yamarthi" target="_blank" class="text-slate-400 hover:text-white transition-colors" aria-label="HackerRank">
+                    <i data-feather="code" class="w-7 h-7"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="glassmorphism-card p-6 md:p-12 rounded-2xl scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center flex items-center justify-center gap-3"><i data-feather="user" class="w-8 h-8 text-sky-400"></i>About Me</h2>
+                <p class="text-base md:text-lg leading-relaxed text-slate-300 text-center max-w-4xl mx-auto">
+                    Hi, I'm Mounika Yamarthi, a final-year B.Tech student specializing in Computer Science at Vasireddy Venkatadri Institute of Technology.
+                    I'm passionate about using technology to solve real-world problems whether it's through AI-powered systems, scalable cloud infrastructure, or intuitive web applications. My journey has led me to explore diverse areas like Cloud Computing, machine learning, and full-stack web development.                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center flex items-center justify-center gap-3 scroll-animate"><i data-feather="zap" class="w-8 h-8 text-sky-400"></i>Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="glassmorphism-card p-6 rounded-xl stagger-item">
+                    <h3 class="text-xl font-semibold text-white mb-4">Programming Languages</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Java</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                    </div>
+                </div>
+                <div class="glassmorphism-card p-6 rounded-xl stagger-item">
+                    <h3 class="text-xl font-semibold text-white mb-4">Web Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">HTML</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">CSS</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">React</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Node.js</span>
+                    </div>
+                </div>
+                <div class="glassmorphism-card p-6 rounded-xl stagger-item">
+                    <h3 class="text-xl font-semibold text-white mb-4">Database & Cloud</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">MySQL</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Google Cloud</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Salesforce</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">AWS</span>
+                    </div>
+                </div>
+                <div class="glassmorphism-card p-6 rounded-xl stagger-item">
+                    <h3 class="text-xl font-semibold text-white mb-4">Tools & Version Control</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Visual Studio</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Git</span>
+                    </div>
+                </div>
+                <div class="glassmorphism-card p-6 rounded-xl md:col-span-2 stagger-item">
+                    <h3 class="text-xl font-semibold text-white mb-4">Virtual Internships</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Infosys Springboard 5.0</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Web Full Stack Developer (AICTE)</span>
+                        <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Google Cloud Generative AI (AICTE)</span>
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center flex items-center justify-center gap-3 scroll-animate"><i data-feather="briefcase" class="w-8 h-8 text-sky-400"></i>Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Project 1 Card -->
+                <div class="glassmorphism-card rounded-xl overflow-hidden flex flex-col stagger-item">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-2">Speech Language Therapy</h3>
+                        <p class="text-slate-400 mb-4">The platform helps both therapists and patients track progress, perform targeted exercises, and enhance speech fluency, articulation, and comprehension.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">HTML</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">CSS</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">MYSQL</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">PHP</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-800/50 mt-auto">
+                        <button data-modal-target="project1-modal" class="open-modal-button font-semibold text-sky-400 hover:text-sky-300 transition-colors flex items-center">
+                            View Project <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Project 2 Card -->
+                <div class="glassmorphism-card rounded-xl overflow-hidden flex flex-col stagger-item">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-2">AI-Enabled Nutrition Recommendation System for Personalized diet planning</h3>
+                        <p class="text-slate-400 mb-4">A smart dietary recommendation system leveraging Artificial Intelligence to generate personalized nutrition plans based on individual health parameters, lifestyle habits, and dietary goals.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">AI/ML</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-800/50 mt-auto">
+                        <button data-modal-target="project2-modal" class="open-modal-button font-semibold text-sky-400 hover:text-sky-300 transition-colors flex items-center">
+                            View Project <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Project 3 Card -->
+                <div class="glassmorphism-card rounded-xl overflow-hidden flex flex-col stagger-item">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-2">StudyStream</h3>
+                        <p class="text-slate-400 mb-4">Developed a web-based learning platform aimed at bridging the education gap for underserved communities and working professionals.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">HTML</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">CSS</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">MYSQL</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">PHP</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-800/50 mt-auto">
+                        <button data-modal-target="project3-modal" class="open-modal-button font-semibold text-sky-400 hover:text-sky-300 transition-colors flex items-center">
+                            View Project <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other sections remain the same... -->
+        <section id="education" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center flex items-center justify-center gap-3"><i data-feather="award" class="w-8 h-8 text-sky-400"></i>Education</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="relative border-l-2 border-slate-700">
+                        <div class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-sky-900 rounded-full -left-3 ring-8 ring-slate-900">
+                                <i data-feather="award" class="w-3 h-3 text-sky-400"></i>
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-white">B.Tech - Computer Science(Artificial Intelligence & Machine Learning)</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-slate-500">2022 - 2026</time>
+                            <p class="text-base font-normal text-slate-400">Vasireddy Venkatadri Institute Of Technology, Guntur</p>
+                            <p class="text-sm text-slate-400">CGPA: 8.88</p>
+                        </div>
+                        <div class="mb-10 ml-6">
+                             <span class="absolute flex items-center justify-center w-6 h-6 bg-sky-900 rounded-full -left-3 ring-8 ring-slate-900">
+                                <i data-feather="book-open" class="w-3 h-3 text-sky-400"></i>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-white">Intermediate Education - M.P.C</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-slate-500">2020 - 2022</time>
+                            <p class="text-base font-normal text-slate-400">Sri Chaitanya Junior College, Guntur</p>
+                             <p class="text-sm text-slate-400">Percentage: 98%</p>
+                        </div>
+                        <div class="ml-6">
+                             <span class="absolute flex items-center justify-center w-6 h-6 bg-sky-900 rounded-full -left-3 ring-8 ring-slate-900">
+                                 <i data-feather="book" class="w-3 h-3 text-sky-400"></i>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-white">Secondary School Certificate</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-slate-500">2019 - 2020</time>
+                            <p class="text-base font-normal text-slate-400">Sri Vivekananda Vidya Niketan High School, 75Tyalluru</p>
+                            <p class="text-sm text-slate-400">Percentage: 92%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center flex items-center justify-center gap-3 scroll-animate"><i data-feather="award" class="w-8 h-8 text-sky-400"></i>Certificates</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="glassmorphism-card p-5 rounded-lg flex items-center gap-4 stagger-item">
+                    <i data-feather="cloud" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                    <span class="text-slate-200">Cloud Computing</span>
+                </div>
+                <div class="glassmorphism-card p-5 rounded-lg flex items-center gap-4 stagger-item">
+                    <i data-feather="code" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                    <span class="text-slate-200">Artificial Intelligence Foundation Certification</span>
+                </div>
+                <div class="glassmorphism-card p-5 rounded-lg flex items-center gap-4 stagger-item">
+                    <i data-feather="cloud-lightning" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                    <span class="text-slate-200">Google Cloud Certified Associate Cloud Engineer</span>
+                </div>
+                <div class="glassmorphism-card p-5 rounded-lg flex items-center gap-4 stagger-item">
+                    <i data-feather="check-circle" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                    <span class="text-slate-200">AWS Academy Graduate</span>
+                </div>
+                <div class="glassmorphism-card p-5 rounded-lg flex items-center gap-4 stagger-item">
+                    <i data-feather="git-merge" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                    <span class="text-slate-200">Learning FullStack Development</span>
+                </div>
+                <div class="glassmorphism-card p-5 rounded-lg flex items-center gap-4 stagger-item">
+                    <i data-feather="coffee" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                    <span class="text-slate-200">Java Programming</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center flex items-center justify-center gap-3"><i data-feather="heart" class="w-8 h-8 text-sky-400"></i>Interests</h2>
+                <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3 sm:gap-4">
+                    <span class="skill-tag bg-slate-700 text-sky-300 font-medium px-4 py-2 rounded-full">Reading Books</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 font-medium px-4 py-2 rounded-full">Watching Movies</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 font-medium px-4 py-2 rounded-full">Programming in Python</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 font-medium px-4 py-2 rounded-full">Cooking</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 font-medium px-4 py-2 rounded-full">Travelling</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 font-medium px-4 py-2 rounded-full">Community Involvement</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section container mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center flex items-center justify-center gap-3"><i data-feather="mail" class="w-8 h-8 text-sky-400"></i>Get In Touch</h2>
+                <p class="text-base md:text-lg text-slate-400 text-center max-w-2xl mx-auto mb-12">
+                    I'm currently seeking new opportunities and would love to hear from you. Whether you have a question or just want to say hi, feel free to reach out.
+                </p>
+                <div class="text-center">
+                    <a href="mailto:yamarthimounika@gmail.com" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold text-lg px-8 py-4 rounded-lg transition-transform transform hover:scale-105 shadow-lg shadow-sky-500/30">
+                        Say Hello
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-900 mt-20">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-center space-x-6 mb-6">
+                 <a href="https://github.com/mouni-04" target="_blank" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                    <i data-feather="github" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/yamarthi-mounika-603a55269" target="_blank" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                    <i data-feather="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="mailto:yamarthimounika@gmail.com" class="text-slate-400 hover:text-white transition-colors" aria-label="Email">
+                    <i data-feather="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+            <p class="text-center text-slate-500 text-sm">
+                &copy; <span id="year"></span> Yamarthi Mounika. All Rights Reserved.
+            </p>
+             <p class="text-center text-xs text-slate-600 mt-2">
+                Designed and built with ❤️
+            </p>
+        </div>
+    </footer>
+
+    <!-- Project 1 Modal -->
+    <div id="project1-modal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm">
+        <div class="modal-content glassmorphism-card w-full max-w-2xl max-h-[90vh] rounded-2xl p-6 md:p-8 flex flex-col scale-95 opacity-0">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-white">Speech Language Therapy</h3>
+                <button class="close-modal-button text-slate-400 hover:text-white">
+                    <i data-feather="x" class="w-7 h-7"></i>
+                </button>
+            </div>
+            <div class="overflow-y-auto pr-2">
+                <p class="text-slate-300 mb-6">A tech-driven solution designed to assist individuals with speech and language disorders by providing interactive, adaptive therapy sessions using AI models. The platform helps both therapists and patients track progress, perform targeted exercises, and enhance speech fluency, articulation, and comprehension.</p>
+                <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
+                <ul class="list-disc list-inside text-slate-400 space-y-2 mb-6">
+                    <li>Interactive exercises for articulation, fluency, and language comprehension.</li>
+                    <li>Adaptive learning: difficulty levels adjust based on user performance.</li>
+                    <li>Therapist dashboard for session monitoring and patient progress tracking.</li>
+                    <li>Secure patient data storage with role-based access.</li>
+                </ul>
+                <h4 class="text-lg font-semibold text-white mb-3">Technologies Used:</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">HTML</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">CSS</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Javascriot</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">PHP</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">MYSQL</span>
+                </div>
+            </div>
+            <div class="mt-auto pt-6 text-right">
+                <a href="https://github.com/mouni-04/Speech-Language-Therapy" target="_blank" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">
+                    View Code <i data-feather="github" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 2 Modal -->
+    <div id="project2-modal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm">
+        <div class="modal-content glassmorphism-card w-full max-w-2xl max-h-[90vh] rounded-2xl p-6 md:p-8 flex flex-col scale-95 opacity-0">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-white">AI-Enabled Nutrition Recommendation System for Personalized diet planning</h3>
+                <button class="close-modal-button text-slate-400 hover:text-white">
+                    <i data-feather="x" class="w-7 h-7"></i>
+                </button>
+            </div>
+            <div class="overflow-y-auto pr-2">
+                <p class="text-slate-300 mb-6"> This project utilizes machine learning algorithms to analyze nutritional datasets and suggest optimized meal plans tailored for specific needs like weight management, diabetes control, and fitness enhancement.</p>
+                <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
+                <ul class="list-disc list-inside text-slate-400 space-y-2 mb-6">
+                    <li>User-specific input collection (age, BMI, activity level, medical conditions).</li>
+                    <li>Intelligent meal recommendations using AI models (e.g., ANN or Decision Trees).</li>
+                    <li>Dynamic feedback-based refinement of diet plans.</li>
+                    <li>Intuitive front-end UI for seamless user interaction.</li>
+                    <li>Nutrition data preprocessing and feature engineering.</li>
+                </ul>
+                <h4 class="text-lg font-semibold text-white mb-3">Technologies Used:</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Scikit-learn</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Streamlit</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
+                </div>
+            </div>
+            <div class="mt-auto pt-6 text-right">
+                <a href="https://github.com/mouni-04/infosysSpringboard_project/tree/main" target="_blank" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">
+                    View Code <i data-feather="github" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Project 3 Modal -->
+    <div id="project3-modal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm">
+        <div class="modal-content glassmorphism-card w-full max-w-2xl max-h-[90vh] rounded-2xl p-6 md:p-8 flex flex-col scale-95 opacity-0">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-white">StudyStream</h3>
+                <button class="close-modal-button text-slate-400 hover:text-white">
+                    <i data-feather="x" class="w-7 h-7"></i>
+                </button>
+            </div>
+            <div class="overflow-y-auto pr-2">
+                <p class="text-slate-300 mb-6"> Developed a web-based learning platform aimed at bridging the education gap for underserved communities and working professionals. StudyStream offers curated educational content, structured subject modules, and interactive features to support self-paced learning.</p>
+                <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
+                <ul class="list-disc list-inside text-slate-400 space-y-2 mb-6">
+                    <li>Designed responsive UI with JavaScript for a smooth user experience.</li>
+                    <li>Created a modular content system for different subject streams.</li>
+                    <li>Implemented secure user authentication and role-based access using PHP & MySQL</li>
+                    <li>Intuitive front-end UI for seamless user interaction.</li>
+                    <li>Ensured accessibility and ease of use for users with limited digital literacy.</li>
+                </ul>
+                <h4 class="text-lg font-semibold text-white mb-3">Technologies Used:</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">HTML</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">CSS</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Javascriot</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">PHP</span>
+                    <span class="skill-tag bg-slate-700 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">MYSQL</span>
+                </div>
+            </div>
+            <div class="mt-auto pt-6 text-right">
+                <a href="https://github.com/mouni-04/StudyStream" target="_blank" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">
+                    View Code <i data-feather="github" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // --- Feather Icons Initialization ---
+            if (typeof feather !== 'undefined') {
+                feather.replace({ 'stroke-width': 1.5 });
+            }
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // --- Dynamic Year for Footer ---
+            const yearSpan = document.getElementById('year');
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            // --- Header Shadow on Scroll ---
+            const header = document.getElementById('header');
+            if(header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('shadow-lg', window.scrollY > 10);
+                    header.classList.toggle('shadow-slate-900/40', window.scrollY > 10);
+                }, { passive: true });
+            }
+
+            // --- Typed Text Effect ---
+            const typedTextSpan = document.getElementById("typed-text");
+            if (typedTextSpan) {
+                const textArray = ["AI & Machine Learning Student", "AI & Cloud Enthusiast", "Creative Problem Solver"];
+                const typingDelay = 100;
+                const erasingDelay = 50;
+                const newTextDelay = 2000;
+                let textArrayIndex = 0;
+                let charIndex = 0;
+
+                function type() {
+                    if (charIndex < textArray[textArrayIndex].length) {
+                        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                        charIndex++;
+                        setTimeout(type, typingDelay);
+                    } else {
+                        setTimeout(erase, newTextDelay);
+                    }
+                }
+
+                function erase() {
+                    if (charIndex > 0) {
+                        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                        charIndex--;
+                        setTimeout(erase, erasingDelay);
+                    } else {
+                        textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                        setTimeout(type, typingDelay + 500);
+                    }
+                }
+                
+                if(textArray.length) setTimeout(type, newTextDelay / 2);
+            }
+
+            // --- Scroll & Stagger Animation Observer ---
+            const animatedElements = document.querySelectorAll('.scroll-animate, .stagger-item');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const delay = entry.target.classList.contains('stagger-item') ? (Array.from(entry.target.parentNode.children).indexOf(entry.target)) * 100 : 0;
+                            entry.target.style.transitionDelay = `${delay}ms`;
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+
+                animatedElements.forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                animatedElements.forEach(el => el.classList.add('visible'));
+            }
+
+            // --- Modal Functionality ---
+            const openModalButtons = document.querySelectorAll('.open-modal-button');
+            const closeModalButtons = document.querySelectorAll('.close-modal-button');
+
+            const openModal = (modalId) => {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    const modalContent = modal.querySelector('.modal-content');
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scroll
+                    // Trigger fade-in and scale-up animation
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalContent.classList.remove('scale-95', 'opacity-0');
+                        modalContent.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            };
+            
+            const closeModal = (modal) => {
+                const modalContent = modal.querySelector('.modal-content');
+                modal.classList.add('opacity-0');
+                modalContent.classList.remove('scale-100', 'opacity-100');
+                modalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // Restore background scroll
+                }, 300); // Match transition duration
+            };
+
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-target');
+                    openModal(modalId);
+                });
+            });
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    closeModal(modal);
+                });
+            });
+
+            // Close modal by clicking on the overlay
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
